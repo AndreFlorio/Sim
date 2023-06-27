@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <table>
+        <tr>
+            <td>Idade Inicial</td>
+            <td><input type="text" id="IdadeInicial"/></td>
+            <td><button onclick="postar()">Postar</button></td>
+        </tr>
+    </table>
+
+    <table>
+        <tr>
+            <td valign="top" width="45%">
+                <table width ="310" style="display: block;">
+                    <tr>
+                        <td width="180">Salario</td>
+                        <td width ="130"><input type="text" id="SalarioMensal"/></td>
+                    </tr>
+                    <tr>
+                        <td width="180">Gastos</td>
+                        <td width ="130"><input type="text" id="GastosMensais"/></td>
+                    </tr>
+                    <tr>
+                        <td width="180">Rendimento/Mes</td>
+                        <td width ="130"><input type="text" id="RendimentoMensal"/></td>
+                    </tr>
+                    <tr>
+                        <td width="180">Tempo/Anos</td>
+                        <td width ="130"><input type="text" id="Tempo"/></td>
+                    </tr>
+                    <tr>
+                        <td><button onclick="calcular()">Calcular</button></td>
+                        <td><button onclick="reiniciar()">Reiniciar</button></td>
+                    </tr>
+                </table>
+
+            </td>
+            <td width="5%"></td>
+            <td valign="top" width =50%>
+                <h2>Resultados</h2>
+                <table>
+                    <tr width="100%">
+                        <td> <b>Dinheiro Final:</b></td>
+                        <td> <b id="Dinheiro"></b></td>
+                    </tr>
+                    <tr>
+                        <td><b>Renda Mensal</b></td>
+                        <td><b id="Renda"></b></td>
+                    </tr>
+                    <tr>
+                        <td><b>Idade</b></td>
+                        <td><b id="Idade"></b></td>
+                    </tr>
+                </td>
+                </table>
+        </tr>
+    </table>
+
+    <Script>
+        var idade =0;
+        function calcular() {
+            var salario = document.getElementById("SalarioMensal").value;
+            var gastos = document.getElementById("GastosMensais").value;
+            var rendimento = document.getElementById("RendimentoMensal").value;
+            var tempo = document.getElementById("Tempo").value;
+            var Dinheiro =0;
+            var Renda =0;
+    
+            document.getElementById("Dinheiro").innerHTML = Dinheiro;
+        }
+    </Script>
+</body>
+</html>
