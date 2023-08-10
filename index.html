@@ -7,14 +7,21 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
+    <h1>Calculadora</h1>
+
     <table>
         <tr>
             <td>Idade Inicial</td>
             <td><input type="text" id="IdadeInicial"/></td>
+        </tr>
+        <tr>
+            <td>Dinheiro Inicial</td>
+            <td><input type="text" id="DinheiroInicial"/></td>
             <td><button onclick="postar()">Postar</button></td>
         </tr>
     </table>
 
+    <br>
     <table>
         <tr>
             <td valign="top" width="45%">
@@ -28,11 +35,11 @@
                         <td width ="130"><input type="text" id="GastosMensais"/></td>
                     </tr>
                     <tr>
-                        <td width="180">Rendimento/Mes</td>
-                        <td width ="130"><input type="text" id="RendimentoMensal"/></td>
+                        <td width="180">%AoMês</td>
+                        <td width ="130"><input type="text" id="Renda"/></td>
                     </tr>
                     <tr>
-                        <td width="180">Tempo/Anos</td>
+                        <td width="180">Tempo(Anos)</td>
                         <td width ="130"><input type="text" id="Tempo"/></td>
                     </tr>
                     <tr>
@@ -47,15 +54,15 @@
                 <h2>Resultados</h2>
                 <table>
                     <tr width="100%">
-                        <td> <b>Dinheiro Final:</b></td>
+                        <td> <b>Dinheiro Atual: </b></td>
                         <td> <b id="Dinheiro"></b></td>
                     </tr>
                     <tr>
-                        <td><b>Renda Mensal</b></td>
-                        <td><b id="Renda"></b></td>
+                        <td><b>Renda Mensal: </b></td>
+                        <td><b id="RendaPassiva"></b></td>
                     </tr>
                     <tr>
-                        <td><b>Idade</b></td>
+                        <td><b>Idade Atual: </b></td>
                         <td><b id="Idade"></b></td>
                     </tr>
                 </td>
@@ -64,16 +71,45 @@
     </table>
 
     <Script>
-        var idade =0;
+        var idade=0;
+        var salario=0;
+        var gastos=0;
+        var renda=0;
+        var tempo=0;
+        var dinheiro =0;
+        var rendaPassiva=0;
+        function postar(){
+            idade = document.getElementById("IdadeInicial").value;
+            document.getElementById("Idade").innerHTML = idade+" Anos";
+            dinheiro = document.getElementById("DinheiroInicial").value;
+            document.getElementById("Dinheiro").innerHTML = dinheiro;
+            rendaPassiva =0;
+            document.getElementById("RendaPassiva").innerHTML = rendaPassiva;
+        }
         function calcular() {
-            var salario = document.getElementById("SalarioMensal").value;
-            var gastos = document.getElementById("GastosMensais").value;
-            var rendimento = document.getElementById("RendimentoMensal").value;
-            var tempo = document.getElementById("Tempo").value;
-            var Dinheiro =0;
-            var Renda =0;
-    
-            document.getElementById("Dinheiro").innerHTML = Dinheiro;
+            salario = document.getElementById("SalarioMensal").value;
+            gastos = document.getElementById("GastosMensais").value;
+            renda = document.getElementById("Renda").value;
+            tempo = document.getElementById("Tempo").value;
+            idade = parseInt(idade) + parseInt(tempo);
+            for(var i=0;i<tempo*12;i++){
+                dinheiro = dinheiro + (salario - gastos) * (renda + 1) / 100;
+            }
+            rendaPassiva = dinheiro*renda/100;
+            document.getElementById("Dinheiro").innerHTML = dinheiro;
+            document.getElementById("RendaPassiva").innerHTML = rendaPassiva;
+            document.getElementById("Idade").innerHTML = idade+" Anos";
+        }
+        function reiniciar(){
+            idade =0;
+            salario =0;
+            gastos = 0;
+            renda = 0;
+            dinheiro =0;
+            rendaPassiva =0;
+            document.getElementById("Dinheiro").innerHTML = "";
+            document.getElementById("RendaPassiva").innerHTML = "";
+            document.getElementById("Idade").innerHTML = "";
         }
     </Script>
 </body>
